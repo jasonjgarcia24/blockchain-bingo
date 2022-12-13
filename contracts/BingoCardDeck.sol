@@ -215,10 +215,10 @@ contract BingoCardDeck is ERC721, AccessControl, Pausable {
     ) internal override {
         uint256 _receiverTokenId = tokens[to];
 
-        // require(
-        //     bingoCardsStatus[_receiverTokenId] == bytes13(bytes1(0x00)),
-        //     "Cannot play more than one card"
-        // );
+        require(
+            bingoCardsStatus[_receiverTokenId] == bytes13(bytes1(0x00)),
+            "Cannot play more than one card"
+        );
 
         super._beforeTokenTransfer(from, to, 0, 0);
     }
